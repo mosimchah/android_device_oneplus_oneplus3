@@ -413,6 +413,9 @@ lib64/lib_fpc_tac_shared.so
 vendor/lib64/libqfp-service.so
 vendor/lib64/qfp.wakeup.so
 
+-vendor/lib/libsdm-disp-apis.so
+-vendor/lib64/libsdm-disp-apis.so
+
 # NFC firmware
 vendor/firmware/libpn548ad_fw.so
 
