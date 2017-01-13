@@ -160,6 +160,10 @@ PRODUCT_BUTTON_GESTURES_PACKAGES := \
 
 PRODUCT_PACKAGES += $(PRODUCT_BUTTON_GESTURES_PACKAGES)
 
+# Bluetooth
+PRODUCT_PACKAGES += \
+    android.hardware.bluetooth@1.0-impl
+
 # Camera
 PRODUCT_PACKAGES += \
     libfilter-sdk \
