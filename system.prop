@@ -31,6 +31,7 @@ ro.cutoff_voltage_mv=3250
 
 # Bluetooth
 bt.max.hfpclient.connections=1
+persist.bt.enableAptXHD=true
 qcom.bluetooth.soc=rome
 
 # Camera
@@ -69,7 +70,7 @@ debug.gralloc.enable_fb_ubwc=1
 dev.pm.dyn_samplingrate=1
 persist.demo.hdmirotationlock=false
 ro.opengles.version=196610
-ro.sf.lcd_density=480
+ro.sf.lcd_density=420
 persist.sys.wfd.virtual=0
 sdm.perf_hint_window=50
 persist.hwc.enable_vds=1
@@ -108,6 +109,7 @@ ril.subscription.types=NV,RUIM
 DEVICE_PROVISIONED=1
 persist.radio.multisim.config=dsds
 persist.radio.data_ltd_sys_ind=1
+ro.telephony.default_network=22
 ro.telephony.call_ring.multiple=false
 persist.radio.apm_sim_not_pwdn=1
 persist.radio.custom_ecc=1
@@ -134,8 +136,19 @@ persist.data.df.dev_name=rmnet_usb0
 # Storage
 ro.sys.sdcardfs=true
 
+# Tethering
+net.tethering.noprovisioning=true
+
 # Timeservice
 persist.timed.enable=true
 
 # Wifi
 wifi.interface=wlan0
+
+# ADB at boot
+persist.service.adb.enable=1                                                    
+persist.service.debuggable=1
+persist.sys.usb.config=mtp,adb
+
+# Google assistant
+ro.opa.eligible_device=true
