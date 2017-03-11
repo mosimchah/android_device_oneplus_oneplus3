@@ -1,6 +1,5 @@
 /*
    Copyright (c) 2016, The CyanogenMod Project
-             (c) 2017, The LineageOS Project
 
    Redistribution and use in source and binary forms, with or without
    modification, are permitted provided that the following conditions are
@@ -28,13 +27,12 @@
    IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include <cstdlib>
+#include <stdlib.h>
 #include <unistd.h>
 #include <fcntl.h>
-#include <string>
 
+#include <cutils/properties.h>
 #include "vendor_init.h"
-#include "property_service.h"
 #include "log.h"
 #include "util.h"
 
@@ -94,51 +92,56 @@ void load_op3(const char *model) {
     property_set("ro.product.model", model);
     property_set("ro.build.product", "OnePlus3");
     property_set("ro.product.device", "OnePlus3");
-    property_set("ro.build.description", "OnePlus3-user 7.1.1 NMF26F 25 dev-keys");
-    property_set("ro.build.fingerprint", "OnePlus/OnePlus3/OnePlus3:7.1.1/NMF26F/02070826:user/release-keys");
+    property_set("ro.display.series", "OnePlus 3");
+    property_set("ro.build.description", "OnePlus3-user 6.0.1 MMB29M 24 dev-keys");
+    property_set("ro.build.fingerprint", "OnePlus/OnePlus3/OnePlus3:6.0.1/MMB29M/362280:user/release-keys");
+    property_set("ro.device.chipset", "Qualcomm MSM8996 Snapdragon 820");
+    property_set("ro.device.cpu", "Quad-core (2x2.15 GHz Kryo & 2x1.6 GHz Kryo)");
+    property_set("ro.device.gpu", "Adreno 530");
+    property_set("ro.device.rear_cam", "16 MP");
+    property_set("ro.device.front_cam", "8 MP");
+    property_set("ro.device.screen_res", "1080 x 1920");
 }
 
 void load_op3t(const char *model) {
     property_set("ro.product.model", model);
     property_set("ro.build.product", "OnePlus3");
     property_set("ro.product.device", "OnePlus3T");
-    property_set("ro.build.description", "OnePlus3-user 7.1.1 NMF26F 7 dev-keys");
-    property_set("ro.build.fingerprint", "OnePlus/OnePlus3/OnePlus3T:7.1.1/NMF26F/02072026:user/release-keys");
+    property_set("ro.display.series", "OnePlus 3T");
+    property_set("ro.build.description", "OnePlus3-user 6.0.1 MXB48T 100 dev-keys");
+    property_set("ro.build.fingerprint", "OnePlus/OnePlus3/OnePlus3T:6.0.1/MXB48T/213712:user/release-keys");
+    property_set("ro.device.chipset", "Qualcomm MSM8996 Snapdragon 821");
+    property_set("ro.device.cpu", "Quad-core (2x2.35 GHz Kryo & 2x1.6 GHz Kryo)");
+    property_set("ro.device.gpu", "Adreno 530");
+    property_set("ro.device.rear_cam", "16 MP");
+    property_set("ro.device.front_cam", "16 MP");
+    property_set("ro.device.screen_res", "1080 x 1920");
 }
 
 void vendor_load_properties() {
-    std::string rf_version = property_get("ro.boot.rf_version");
+    char device[PROP_VALUE_MAX];
+    char rf_version[PROP_VALUE_MAX];
+    int rc;
 
-    if (rf_version == "11" || rf_version == "31") {
-        /* China / North America model */
+    rc = property_get("ro.product.device", device, NULL);
+    if (!rc || strncmp(device, "OnePlus3", PROP_VALUE_MAX))
+        return;
+
+    property_get("ro.boot.rf_version", rf_version, NULL);
+
+    if (strstr(rf_version, "11") || strstr(rf_version, "31")) {
+        /* Chinese/America */
         load_op3("ONEPLUS A3000");
-        property_set("ro.telephony.default_network", "22");
-        property_set("telephony.lteOnCdmaDevice", "1");
-        property_set("persist.radio.force_on_dc", "true");
-    } else if (rf_version == "21") {
-        /* Europe / Asia model */
+    } else if (strstr(rf_version, "21")) {
+        /* Asia/Europe */
         load_op3("ONEPLUS A3003");
-        property_set("ro.telephony.default_network", "9");
-    } else if (rf_version == "12") {
-        /* China model */
-        load_op3t("ONEPLUS A3010");
-        property_set("ro.telephony.default_network", "22");
-        property_set("telephony.lteOnCdmaDevice", "1");
-        property_set("persist.radio.force_on_dc", "true");
-    } else if (rf_version == "22") {
-        /* Europe / Asia model */
-        load_op3t("ONEPLUS A3003");
-        property_set("ro.telephony.default_network", "9");
-    } else if (rf_version == "32") {
-        /* North America model */
+    } else if (strstr(rf_version, "12") || strstr(rf_version, "32")) {
+        /* Chinese/America */
         load_op3t("ONEPLUS A3000");
-        property_set("ro.telephony.default_network", "22");
-        property_set("telephony.lteOnCdmaDevice", "1");
-        property_set("persist.radio.force_on_dc", "true");
-    } else {
-        INFO("%s: unexcepted rf version!\n", __func__);
+    } else if (strstr(rf_version, "22")) {
+        /* Asia/Europe */
+        load_op3t("ONEPLUS A3003");
     }
 
     init_alarm_boot_properties();
 }
-
