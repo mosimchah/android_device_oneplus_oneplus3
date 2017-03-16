@@ -144,6 +144,3 @@ wifi.interface=wlan0
 persist.service.adb.enable=1                                                    
 persist.service.debuggable=1
 persist.sys.usb.config=mtp,adb
-
-# Google assistant
-ro.opa.eligible_device=true
