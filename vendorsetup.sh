@@ -1,3 +1,2 @@
-add_lunch_combo XOS_oneplus3-userdebug
 add_lunch_combo XOS_oneplus3-user
 add_lunch_combo XOS_oneplus3-eng
