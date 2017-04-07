@@ -144,6 +144,13 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     external/ant-wireless/antradio-library/com.dsi.ant.antradio_library.xml:system/etc/permissions/com.dsi.ant.antradio_library.xml
 
+# Buttons & Gestures
+PRODUCT_BUTTON_GESTURES_PACKAGES := \
+	oppo-keyhandler \
+	ConfigPanel
+
+PRODUCT_PACKAGES += $(PRODUCT_BUTTON_GESTURES_PACKAGES)
+
 # Camera
 PRODUCT_PACKAGES += \
     Snap \
