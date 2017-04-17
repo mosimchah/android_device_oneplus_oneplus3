@@ -153,8 +153,7 @@ PRODUCT_PACKAGES += $(PRODUCT_BUTTON_GESTURES_PACKAGES)
 
 # Camera
 PRODUCT_PACKAGES += \
-    Snap \
-    libcamera_shim
+    Snap
 
 # Connectivity Engine support (CNE)
 PRODUCT_PACKAGES += \
