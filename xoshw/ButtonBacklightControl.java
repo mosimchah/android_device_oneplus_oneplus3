@@ -25,8 +25,11 @@ public class ButtonBacklightControl extends IButtonBacklightControl {
 
     public ButtonBacklightControl() {
         CONTROL_TYPE = CONTROL_TYPE_PARTIAL;
+        HAVE_TWO_BACKLIGHT_PATHS = true;
         BUTTON_BACKLIGHT_PATH = "/sys/devices/soc/leds-qpnp-18/leds/"
                               + "button-backlight/";
+        BUTTON_BACKLIGHT_PATH2 = "/sys/devices/soc/leds-qpnp-14/leds/"
+                                + "button-backlight";
     }
 
 }
