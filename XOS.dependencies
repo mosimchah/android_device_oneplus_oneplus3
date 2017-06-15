@@ -15,8 +15,9 @@
     "branch": "XOS-7.1"
   },
   {
-    "repository": "android_packages_resources_devicesettings",
+    "repository": "LineageOS/android_packages_resources_devicesettings",
     "target_path": "packages/resources/devicesettings",
+    "remote": "github",
     "branch": "cm-14.1"
   },
   {
@@ -41,7 +42,8 @@
    "repository" : "AOSiP-Devices/aarch64-linux-android-4.9",
    "target_path": "prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9-aosip",
    "remote": "github",
-   "branch": "n-mr1"
+   "branch": "n-mr1",
+   "clone-depth": "1"
   },
   {
    "repository" : "LineageOS/android_hardware_cyanogen",
