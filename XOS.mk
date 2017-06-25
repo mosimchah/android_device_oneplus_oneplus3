@@ -33,7 +33,7 @@ PRODUCT_GMS_CLIENTID_BASE := android-oneplus
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.ota.romname=$(PRODUCT_NAME) \
     persist.ota.version=$(shell date +%Y%m%d) \
-    persist.ota.manifest=https://raw.githubusercontent.com/halogenOS/android_extras_ota/XOS-7.1/$(PRODUCT_NAME).xml
+    persist.ota.manifest=https://raw.githubusercontent.com/halogenOS/android_extras_ota/XOS-7.1/$(PRODUCT_DEVICE).xml
 
 PRODUCT_SYSTEM_PROPERTY_BLACKLIST += ro.product.model
 
