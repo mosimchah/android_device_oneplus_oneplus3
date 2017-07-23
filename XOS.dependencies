@@ -36,12 +36,5 @@
     "target_path": "vendor/nxp-nfc/opensource/Nfc",
     "remote": "github",
     "branch": "cm-14.1"
-  },
-  {
-   "repository" : "AOSiP-Devices/aarch64-linux-android-4.9",
-   "target_path": "prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9-aosip",
-   "remote": "github",
-   "branch": "n-mr1",
-   "clone-depth": "1"
   }
 ]
