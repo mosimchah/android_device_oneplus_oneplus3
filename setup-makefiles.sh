@@ -28,9 +28,9 @@ INITIAL_COPYRIGHT_YEAR=2016
 MY_DIR="${BASH_SOURCE%/*}"
 if [[ ! -d "$MY_DIR" ]]; then MY_DIR="$PWD"; fi
 
-CM_ROOT="$MY_DIR"/../../..
+ANDROID_ROOT="$MY_DIR"/../../..
 
-HELPER="$CM_ROOT"/vendor/cm/build/tools/extract_utils.sh
+HELPER="$ANDROID_ROOT"/vendor/xos/build/tools/extract_utils.sh
 if [ ! -f "$HELPER" ]; then
     echo "Unable to find helper script at $HELPER"
     exit 1
@@ -38,7 +38,7 @@ fi
 . "$HELPER"
 
 # Initialize the helper
-setup_vendor "$DEVICE" "$VENDOR" "$CM_ROOT"
+setup_vendor "$DEVICE" "$VENDOR" "$ANDROID_ROOT"
 
 # Copyright headers and guards
 write_headers
@@ -70,7 +70,9 @@ EOF
 
 write_makefiles "$MY_DIR"/proprietary-files-qc-perf.txt
 
-include \$(CLEAR_VARS)
+cat << EOF >> "$PRODUCTMK"
+
+include \$\(CLEAR_VARS\)
 LOCAL_MODULE := libsdm-disp-apis
 LOCAL_MODULE_OWNER := $VENDOR
 LOCAL_SRC_FILES_64 := proprietary/vendor/lib64/libsdm-disp-apis.so
@@ -85,6 +87,8 @@ LOCAL_PROPRIETARY_MODULE := true
 include \$(BUILD_PREBUILT)
 
 echo "endif" >> "$PRODUCTMK"
+
+EOF
 
 cat << EOF >> "$ANDROIDMK"
 
