@@ -1,1 +1,4 @@
+type schedtune_cpuset, fs_type;
+
 allow perfd mediacodec:process signull;
+allow perfd schedtune_cpuset:file w_file_perms;
