@@ -1,7 +1,8 @@
-type schedtune_cpuset, fs_type;
+type stune_dev, fs_type;
 
 allow perfd mediacodec:process signull;
-allow perfd schedtune_cpuset:file w_file_perms;
+allow perfd stune_dev:file w_file_perms;
+allow perfd stune_dev:dir w_file_perms;
 allow perfd cameraserver:process signull;
 allow perfd system_server:file write;
 allow perfd cgroup:file r_file_perms;
