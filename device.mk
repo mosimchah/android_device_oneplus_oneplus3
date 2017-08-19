@@ -210,7 +210,8 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     gps.msm8996 \
     libcurl \
-    libgnsspps
+    libgnsspps \
+    libshims_get_process_name
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/gps/etc/flp.conf:system/etc/flp.conf \
@@ -317,7 +318,7 @@ PRODUCT_PACKAGES += \
 # Wifi HAL
 PRODUCT_PACKAGES += \
     android.hardware.wifi@1.0-service
-    
+
 # Wifi
 PRODUCT_PACKAGES += \
     ipacm \
